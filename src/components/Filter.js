@@ -4,7 +4,7 @@ const Filter = ({onChangeInput}) => {
 
     const handleInputChange = (event) => {
         onChangeInput(event.target.value);
-        console.log(event.target.value)
+        // console.log(event.target.value)
     }
     return(
         <>

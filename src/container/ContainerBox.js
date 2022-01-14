@@ -15,12 +15,15 @@ const ContainerBox = () => {
     useEffect(() => {
         Promise.all(newsIDList.slice(0, 20).map(newsID => fetch(insertID(newsID))))
         .then(response => Promise.all(response.map(result => result.json())))
-        .then(data => setNewsList(data));
+        .then(data => {
+            setNewsList(data);
+            setNewFilteredNewsList(data);
+        });
     }, [newsIDList]);
 
-    useEffect(() => {
-        setNewFilteredNewsList([...newsList]);
-    }, [newsList])
+    // useEffect(() => {
+    //     setNewFilteredNewsList([...newsList]);
+    // }, [newsList])
 
     const getNews = url => {
         fetch(url).then(res => res.json()).then((value) => setNewsIDList(value));
